@@ -1,6 +1,5 @@
 # Quasar App (products)
-
-A Quasar Project
+Product Store
 
 ## Install the dependencies
 ```bash
