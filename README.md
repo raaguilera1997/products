@@ -1,4 +1,4 @@
-# Quasar App (products)
+# Products Store (Quasar + TypeScript+Lottie)
 Product Store
 
 ## Install the dependencies
