@@ -1,5 +1,6 @@
-# Products Store (Quasar + TypeScript+Lottie)
-Product Store
+# Quasar App (Quasar + Vue3 + TypeScript + Lottie + Pinnia  )
+
+A Quasar Project
 
 ## Install the dependencies
 ```bash

@@ -1,7 +1,7 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
+  <q-layout view="lHh Lpr lFf" class="bg-white">
     <q-header elevated>
-      <q-toolbar>
+      <q-toolbar class="bg-ap-primary">
         <q-btn
           flat
           dense
@@ -9,17 +9,20 @@
           icon="menu"
           aria-label="Menu"
           @click="toggleLeftDrawer"
-        />
+        /> 
+        <q-avatar>
+          <q-img src="~assets/store.png" width="30px"></q-img>
+        </q-avatar>
 
         <q-toolbar-title>
-          Quasar App
+           TIENDA
         </q-toolbar-title>
-
-        <div>Quasar v{{ $q.version }}</div>
+<!-- 
+        <div>Quasar v{{ $q.version }}</div> -->
       </q-toolbar>
     </q-header>
 
-    <q-drawer
+    <!-- <q-drawer
       v-model="leftDrawerOpen"
       show-if-above
       bordered
@@ -37,10 +40,16 @@
           v-bind="link"
         />
       </q-list>
-    </q-drawer>
+    </q-drawer> -->
 
-    <q-page-container>
-      <router-view />
+    <q-page-container class="bg-grey-1">
+      <transition
+          enter-active-class="animated slideInRight"
+          leave-active-class="animated fadeOut"
+          mode="out-in"
+      >
+        <router-view/>
+      </transition>
     </q-page-container>
   </q-layout>
 </template>
