@@ -5,6 +5,6 @@ interface Product {
     description:String,
     image:String,
     rating:Object,
-    cantidad:0,
+    cantidad:number,
 }
 export default Product

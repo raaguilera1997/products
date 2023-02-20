@@ -1,9 +1,8 @@
 <template>
   <div class="q-pa-lg">
     <div class="row q-col-gutter-md ">
-
       <q-list
-          v-for="item in products"
+          v-for="item in props.products"
           :key="item"
           class="col-6"
       >
@@ -31,7 +30,7 @@
                 </q-item-label>
               </q-tooltip>
             </q-btn>
-            <q-btn class="BtnShopping q-pt-xl" flat  rounded  icon="las la-shopping-cart" size="md">
+            <q-btn class="BtnShopping q-pt-xl" flat  rounded  icon="las la-shopping-cart" size="md" @click="AddProduct(item)">
               <q-tooltip class="bg-grey-3 text-dark" style="font-weight: bold" content-style="font-size: 13px">
                 Add to Cart</q-tooltip>
             </q-btn>
@@ -45,10 +44,17 @@
 
 <script setup lang="ts">
 
-
+import {ref,watch} from 'vue'
+import {useProducts} from 'src/stores/products'
+import Product from "components/types/Product";
+let store = useProducts()
 const props = defineProps({
   products: { type: [], required: true },
 })
+function AddProduct(product: Product) {
+  product.cantidad=1
+  store.addProduct(product)
+}
 </script>
 
 <style lang="scss" scoped>
