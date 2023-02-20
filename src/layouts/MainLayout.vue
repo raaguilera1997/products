@@ -15,7 +15,7 @@
         </q-avatar>
 
         <q-toolbar-title>
-           TIENDA
+          PRODUCT STORE
         </q-toolbar-title>
 <!-- 
         <div>Quasar v{{ $q.version }}</div> -->

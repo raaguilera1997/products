@@ -4,7 +4,7 @@
       <div class="col-6">
       <show-product :products="products"></show-product>
       </div>
-      <div class="col-xs-12 col-md-6 flex flex-center q-pt-md ">
+      <div class="col-xs-12 col-md-6 fixed-right" style="top: 23vw" >
         <Vue3Lottie :animationData="ProductsJSON" :width="400" :height="400"/>
       </div>
     </div>
@@ -86,4 +86,5 @@ onMounted(()=>{
     clip-path: polygon(100% 0, 0% 100%, 100% 100%);
   }
 }
+
 </style>
