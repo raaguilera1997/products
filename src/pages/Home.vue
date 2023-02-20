@@ -5,6 +5,7 @@
       <Categories :categories="categories"></Categories>
       </div>
       <div class="col-xs-12 col-md-6 flex flex-center q-pt-md ">
+
         <Vue3Lottie :animationData="PrincipalJSON" :width="400" :height="400"/>
       </div>
     </div>
@@ -31,7 +32,7 @@ async function loadData() {
   Loading.show({
     spinnerSize: 120,
     backgroundColor: 'white',
-    message: 'Cargando...',
+    message: 'Loadding...',
     messageColor: 'white',
     spinnerColor: 'ap-primary',
   })

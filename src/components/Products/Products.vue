@@ -5,6 +5,7 @@
       <show-product :products="products"></show-product>
       </div>
       <div class="col-xs-12 col-md-6 fixed-right" style="top: 23vw" >
+        <q-fab color="purple" icon="keyboard_arrow_up" direction="up"></q-fab>
         <Vue3Lottie :animationData="ProductsJSON" :width="400" :height="400"/>
       </div>
     </div>
@@ -34,7 +35,7 @@ onMounted(()=>{
     Loading.show({
       spinnerSize: 120,
       backgroundColor: 'white',
-      message: 'Cargando...',
+      message: 'Loadding...',
       messageColor: 'white',
       spinnerColor: 'ap-primary',
     })
