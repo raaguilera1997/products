@@ -2,32 +2,43 @@
   <q-layout view="lHh Lpr lFf" class="bg-white">
     <q-header elevated>
       <q-toolbar class="bg-ap-primary">
-        <q-btn
-          flat
-          dense
-          round
-          icon="menu"
-          aria-label="Menu"
-          @click="toggleLeftDrawer"
-        /> 
+<!--        <q-btn-->
+<!--          flat-->
+<!--          dense-->
+<!--          round-->
+<!--          icon="menu"-->
+<!--          aria-label="Menu"-->
+<!--          @click="toggleLeftDrawer"-->
+<!--        /> -->
         <q-avatar>
           <q-img src="~assets/store.png" width="30px"></q-img>
         </q-avatar>
 
         <q-toolbar-title>
           PRODUCT STORE
+
         </q-toolbar-title>
         <q-badge class="alarm" color="red" floating>{{store.get_cant_product}}</q-badge>
-        <q-btn-dropdown :auto-close="store.get_cant_product==0"   :disable="store.get_cant_product==0"  flat color="white" icon="las la-shopping-cart">
+
+
+        <q-btn v-if="nameRoute=='Product'" flat rounded icon="las la-backspace" @click="router.push({name:'Home'})">
+          <q-tooltip class="bg-grey-3 text-dark" style="font-weight: bold" content-style="font-size: 13px">
+            Back</q-tooltip>
+        </q-btn>
+        <q-btn-dropdown rounded :auto-close="store.get_cant_product==0"   :disable="store.get_cant_product==0"  flat color="white" icon="las la-shopping-cart">
           <div v-if="!store.get_cant_product==0">
             <q-item-label class="bg-ap-light text-dark text-center" style="font-weight: bold" header>PRODUCTS</q-item-label>
             <q-list class="rounded-borders" v-for="item in store.get_products"
                     :key="item" >
               <q-item clickable v-ripple>
                 <q-item-section avatar top>
-                  <q-img  :src="item.image" height="40px" width="40px">
+                  <div class="q-pt-md">
+                    <q-img  :src="item.image"  width="40px">
+                    </q-img>
+                  </div>
 
-                  </q-img>
+
+
                 </q-item-section>
 
                 <q-item-section>
@@ -39,8 +50,14 @@
                         </span>
                   </q-item-label>
                   <q-item-label style="font-size: 12px">
+                    <span> price: </span>
+                    <span class="text-ap-primary" style="font-weight: bold">
+                          {{ item.price }}
+                        </span>
+                  </q-item-label>
+                  <q-item-label style="font-size: 12px">
                     <span> total: </span>
-                    <b class="text-red" >
+                    <b class="text-ap-primary-dark" >
                       {{ item.cantidad*item.price }}
                     </b>
                   </q-item-label>
@@ -72,31 +89,42 @@
             </q-item>
           </div>
 
+
         </q-btn-dropdown>
-<!-- 
+<!--
         <div>Quasar v{{ $q.version }}</div> -->
       </q-toolbar>
     </q-header>
 
-    <!-- <q-drawer
-      v-model="leftDrawerOpen"
-      show-if-above
-      bordered
-    >
-      <q-list>
-        <q-item-label
-          header
-        >
-          Essential Links
-        </q-item-label>
+<!--    <q-drawer-->
+<!--        v-model="leftDrawerOpen"-->
+<!--        show-if-above-->
+<!--        :width="250"-->
+<!--        :breakpoint="500"-->
+<!--        bordered-->
+<!--        class="bg-grey-3"-->
+<!--    >-->
+<!--      <q-item-label class="text-dark" header style="font-weight: bold" >PRODUCT STORE</q-item-label>-->
 
-        <EssentialLink
-          v-for="link in essentialLinks"
-          :key="link.title"
-          v-bind="link"
-        />
-      </q-list>
-    </q-drawer> -->
+
+<!--      <q-list>-->
+<!--        <template v-for="(menuItem, index) in essentialLinks" :key="index">-->
+<!--          <q-item clickable :active="menuItem.label === 'Outbox'" v-ripple>-->
+<!--            <q-item-section avatar>-->
+<!--              <q-icon :name="menuItem.icon" />-->
+<!--            </q-item-section>-->
+<!--            <q-item-section>-->
+<!--              <q-item-label>{{menuItem.title}}</q-item-label>-->
+<!--              <q-item-label caption lines="2">{{menuItem.description}}</q-item-label>-->
+<!--            </q-item-section>-->
+<!--          </q-item>-->
+<!--          <q-separator  />-->
+<!--        </template>-->
+
+<!--      </q-list>-->
+
+
+
 
     <q-page-container class="bg-grey-1">
       <transition
@@ -111,58 +139,46 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import {computed, ref} from 'vue';
 import EssentialLink, { EssentialLinkProps } from 'components/EssentialLink.vue';
 import {useProducts} from 'src/stores/products'
 import Product from "components/types/Product";
+import {useRoute, useRouter} from "vue-router";
+let route=useRoute()
+let router=useRouter()
 let store = useProducts()
 const essentialLinks: EssentialLinkProps[] = [
   {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev'
+    title: 'ELECTRONICS',
+    description: 'Here you will find all electronic products',
+    icon: 'link'
   },
   {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
-    link: 'https://github.com/quasarframework'
+    title: 'JEWELERY',
+    description: 'Here you can find all the jewelry',
+    icon: 'link',
+
   },
   {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: 'https://chat.quasar.dev'
+    title: "MEN'S CLOTHING",
+    description: "Here you can find all men's clothes",
+    icon: 'link'
+
   },
   {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev'
+    title: "WOMEN'S CLOTHING",
+    description: "Here you can find all women's clothes",
+    icon: 'link'
+
   },
-  {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev'
-  },
-  {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev'
-  },
-  {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev'
-  }
+
 ];
 
 const leftDrawerOpen = ref(false)
 
+let nameRoute=computed(()=>{
+  return route.name
+})
 function increaseProduct(value) {
  value.cantidad++
 

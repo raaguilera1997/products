@@ -5,7 +5,8 @@
       <show-product :products="products"></show-product>
       </div>
       <div class="col-xs-12 col-md-6 fixed-right" style="top: 23vw" >
-        <q-fab color="purple" icon="keyboard_arrow_up" direction="up"></q-fab>
+
+<!--        <q-fab padding="10px" color="purple" icon="las la-backspace" label="BACK" direction="up" style="left: 20vw;bottom:5vw"></q-fab>-->
         <Vue3Lottie :animationData="ProductsJSON" :width="400" :height="400"/>
       </div>
     </div>
@@ -87,5 +88,6 @@ onMounted(()=>{
     clip-path: polygon(100% 0, 0% 100%, 100% 100%);
   }
 }
+
 
 </style>

@@ -14,7 +14,7 @@
           :index==4?'src/assets/woman.webp'
           :''
 
-       " style="width: 100%;height: 70%"/>
+       " style="width: 100%;height: 65%"/>
           <q-card-section>
             <div class="text-subtitle1" style="font-weight: bold" >{{ categories[index-1].toUpperCase()}}</div>
             <div class="text-caption  text-grey-7" style="font-weight: bold">
